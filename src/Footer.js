@@ -4,7 +4,7 @@ import Modal from './Components/Modal';
 import taiwan_districts from './Components/taiwan_districts.json'
 
 function Footer() {
-  const [msgMailTitle,setMsgMailTitle] = useState('勝翔九鼎網站的表單')
+  const [msgMailTitle,setMsgMailTitle] = useState('偉築新豐洲網站的表單')
   const [mailSent, setmailSent] = useState(false);
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -60,56 +60,76 @@ function Footer() {
   }
   return (
     <div
-      className='w-full  bg-cover bg-center bg-no-repeat py-6 relative '
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL +'/images/footer_bg.png'})`,
-      }}
+      className='w-full bg-[#0992A0] bg-cover bg-center bg-no-repeat py-6 relative '
+
     >
       <div className='flex flex-col md:flex-row w-10/12 mx-auto gap-14 my-20 items-center'>
+        <div className='md:w-1/2 md:px-10'>
+          <img src={process.env.PUBLIC_URL+'/images/footer_logo.png'} alt="" />
+          <div className='mt-10'>
+            <img src={process.env.PUBLIC_URL+'/images/footer_subtitle.png'} alt="" />
+          </div>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-2 w-full  mt-8'>
+            <a href="tel:032872448" className='bg-[#195c64] py-2 px-4 rounded-md '>
+              <img src={process.env.PUBLIC_URL+'/images/footer_icon01_t.png'} alt=""  className=''/>
+            </a>
+            <div className='bg-[#195c64] py-2 px-4 rounded-md  '>
+              <img src={process.env.PUBLIC_URL+'/images/footer_icon02_t.png'} alt=""  className=''/>
+            </div>
 
-        <div className='w-full'>
+            <a href="https://goo.gl/maps/ifax9Dm7AyLxRY557" target='_blank' rel="noreferrer" className='bg-[#195c64] py-2 px-4 rounded-md  basis-1/2' >
+              <img src={process.env.PUBLIC_URL+'/images/footer_icon03_t.png'} alt=""  className=''/>
+            </a>
+            
+            <a href="https://www.facebook.com/neosupercity" target='_blank' rel="noreferrer" className='bg-[#195c64] py-2 px-4 rounded-md   '>
+              <img src={process.env.PUBLIC_URL+'/images/footer_icon04_t.png'} alt=""  className=''/>
+            </a>
+            
+          </div>
+        </div>
+        <div className='md:w-1/2'>
           <div className='w-2/3 md:w-1/3 mx-auto'>
             <img src={process.env.PUBLIC_URL+'/images/footer_title.png'} alt="" />
           </div>
 
           {/* 表單 */}
-          <div className='w-full md:w-3/5 mx-auto'>
+          <div className='w-full mx-auto'>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full mx-auto my-10  rel" data-aos="fade-up" data-aos-duration="1500" >
 
               <div className='w-full  my-3 '>
-                <input type="text" className="block  bg-white  w-full
+                <input type="text" className="block border bg-transparent text-white rounded-md w-full
                     px-3 py-2  " placeholder="姓名"   {...register("name", { required: true})}/>
               </div>
               <div className='w-full  my-3 '>
-                <input type="text" className="block  bg-white  w-full 
+                <input type="text" className="block border bg-transparent text-white rounded-md  w-full 
                     px-3 py-2  " placeholder="聯絡電話"    {...register("tel", { required: true})}/>
               </div>
               <div className='w-full my-3  '>
-                <input type="mail" className="block  bg-white   w-full
+                <input type="mail" className="block border bg-transparent text-white rounded-md   w-full
                     px-3 py-2 " placeholder="電子信箱"   {...register("mail", { required: true})}/>
               </div>
               <div className='flex gap-3'>
                 <div className='w-full  '>
-                  <select className="block  bg-white  w-full px-3 py-2 "  {...register("main_district", { required: true})} onChange={(e)=>{
+                  <select className="block border bg-transparent text-white rounded-md  w-full px-3 py-2 "  {...register("main_district", { required: true})} onChange={(e)=>{
                     handleChange(e)
                   }}>
-                    <option defaultValue value="">居住縣市</option>
+                    <option defaultValue value="" className='text-white '>居住縣市</option>
                     {
                       taiwan_districts.map((item,index)=>{
                         return(
-                          <option value={item.name} key={item.name}>{item.name}</option>
+                          <option value={item.name} key={item.name} className='text-black'>{item.name}</option>
                         )
                       })
                     }
                   </select>
                 </div>
                 <div className='w-full  '>
-                  <select className="block  bg-white  w-full px-3 py-2  "  {...register("sub_district", { required: true})}>
-                    <option defaultValue value="">居住地區</option>
+                  <select className="block border bg-transparent text-white rounded-md  w-full px-3 py-2  "  {...register("sub_district", { required: true})}>
+                    <option defaultValue value="" className='text-white '>居住地區</option>
                     {
                       subDistricts.map((item,index)=>{
                         return(
-                          <option value={item.name} key={item.name+index}>{item.name}</option>
+                          <option value={item.name} key={item.name+index} className='text-black'>{item.name}</option>
                         )
                       })
                     }
@@ -124,8 +144,8 @@ function Footer() {
                   <div className='text-[#fff] ml-2   underline-offset-2 cursor-pointer' onClick={()=>setIsOpen(true)}> <span className='underline'>個人資料聲明事項</span>，我同意通過電話或郵件方式與我聯絡</div>
                 </div>
               </div>
-              <div className='flex flex-col w-3/4 mx-auto gap-10 my-8 md:my-12'>
-                <button className='bg-white px-2 py-2  font-bold w-full  rounded-full  text-md tracking-wide text-[#000]' type='submit'>送出</button>
+              <div className='flex flex-col w-full mx-auto gap-10 my-8 md:my-12'>
+                <button className='bg-[#F3EEC6] px-2 py-2  font-bold w-full  rounded-md  text-md tracking-wide text-[#000]' type='submit'>送出</button>
                 <button className='px-2 py-2  font-bold w-full  rounded-full  text-md tracking-wide text-white' type='reset'>清除</button>
               </div>
               <div>{error}  {mailSent}</div>
