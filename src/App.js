@@ -32,7 +32,7 @@ function App() {
       <Section05 />
       <Section06 />
       <Section07 /> 
-      <Section08 /> 
+      {/* <Section08 />  */}
       <Section09 /> 
       <Footer />
     </div>
