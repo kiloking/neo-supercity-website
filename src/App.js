@@ -13,6 +13,7 @@ import Section07 from "./Section07";
 import Section08 from "./Section08";
 import Section09 from "./Section09";
 import Footer from "./Footer";
+import YtVideo from "./YtVideo";
 function App() {
   useEffect(() => {
     setTimeout(function() {
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <YtVideo />
       <Section01 />
       <Section02 />
       <Section03 />
